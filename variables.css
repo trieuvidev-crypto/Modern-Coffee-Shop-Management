@@ -1,0 +1,132 @@
+/* ==========================================================================
+   VARIABLES.CSS — Design Tokens
+   Modern Coffee Shop Management & Digital Menu
+   ========================================================================== */
+
+:root {
+  /* ---- Brand Palette (named, not generic) -------------------------------- */
+  --color-espresso: #2B1B14;      /* deepest brown — text on light, bg on dark */
+  --color-espresso-soft: #3D291F;
+  --color-roast: #6F4E37;         /* primary brand color */
+  --color-roast-light: #8A6A50;
+  --color-cream: #F7F1E6;         /* light surface */
+  --color-cream-soft: #FBF8F2;
+  --color-latte: #E8DACB;         /* secondary surface / card */
+  --color-latte-dark: #D9C6AF;
+  --color-gold: #C9A227;          /* premium accent */
+  --color-gold-soft: #E0BE55;
+  --color-sage: #7C8B6F;          /* fresh / success accent */
+  --color-sage-soft: #9CAA8E;
+  --color-white: #FFFFFF;
+  --color-black: #14100D;
+  --color-danger: #B5453D;
+  --color-info: #4A6FA5;
+
+  /* ---- Roast Line signature gradient (light -> dark roast) ---------------- */
+  --gradient-roast-line: linear-gradient(90deg, #E0BE55 0%, #C9A227 25%, #8A6A50 55%, #6F4E37 80%, #2B1B14 100%);
+  --gradient-hero: linear-gradient(135deg, rgba(201,162,39,0.14) 0%, rgba(111,78,55,0.10) 50%, rgba(124,139,111,0.08) 100%);
+  --gradient-gold: linear-gradient(120deg, #E0BE55 0%, #C9A227 100%);
+
+  /* ---- Typography ---------------------------------------------------------- */
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  --fs-xs: clamp(0.72rem, 0.7rem + 0.1vw, 0.8rem);
+  --fs-sm: clamp(0.84rem, 0.8rem + 0.15vw, 0.92rem);
+  --fs-base: clamp(0.98rem, 0.94rem + 0.2vw, 1.05rem);
+  --fs-md: clamp(1.1rem, 1.02rem + 0.35vw, 1.3rem);
+  --fs-lg: clamp(1.35rem, 1.2rem + 0.6vw, 1.7rem);
+  --fs-xl: clamp(1.8rem, 1.5rem + 1.2vw, 2.6rem);
+  --fs-2xl: clamp(2.4rem, 1.9rem + 2vw, 3.8rem);
+  --fs-3xl: clamp(3rem, 2.2rem + 3.2vw, 5.2rem);
+
+  --lh-tight: 1.1;
+  --lh-snug: 1.3;
+  --lh-normal: 1.6;
+  --lh-relaxed: 1.8;
+
+  /* ---- Spacing scale --------------------------------------------------------- */
+  --space-3xs: clamp(0.25rem, 0.23rem + 0.1vw, 0.3rem);
+  --space-2xs: clamp(0.5rem, 0.46rem + 0.2vw, 0.6rem);
+  --space-xs: clamp(0.75rem, 0.68rem + 0.3vw, 0.9rem);
+  --space-sm: clamp(1rem, 0.9rem + 0.4vw, 1.25rem);
+  --space-md: clamp(1.5rem, 1.3rem + 0.8vw, 2rem);
+  --space-lg: clamp(2.25rem, 1.9rem + 1.4vw, 3.25rem);
+  --space-xl: clamp(3.5rem, 2.8rem + 2.8vw, 6rem);
+  --space-2xl: clamp(5rem, 4rem + 4vw, 9rem);
+
+  /* ---- Radius / Shadow / Border ------------------------------------------------ */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-full: 999px;
+
+  --shadow-sm: 0 2px 8px rgba(43, 27, 20, 0.06);
+  --shadow-md: 0 8px 24px rgba(43, 27, 20, 0.10);
+  --shadow-lg: 0 20px 48px rgba(43, 27, 20, 0.14);
+  --shadow-glow-gold: 0 8px 28px rgba(201, 162, 39, 0.28);
+  --shadow-inset: inset 0 1px 0 rgba(255,255,255,0.4);
+
+  --glass-bg: rgba(247, 241, 230, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.35);
+  --glass-blur: blur(16px);
+
+  /* ---- Motion ------------------------------------------------------------------ */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 160ms;
+  --dur-base: 280ms;
+  --dur-slow: 480ms;
+
+  /* ---- Layout -------------------------------------------------------------- */
+  --container-max: 1280px;
+  --container-pad: clamp(1.25rem, 4vw, 3rem);
+  --nav-height: 76px;
+  --z-nav: 100;
+  --z-modal: 300;
+  --z-toast: 400;
+  --z-loading: 500;
+
+  /* ---- Semantic (Light mode — default) -------------------------------------- */
+  --bg-body: var(--color-cream);
+  --bg-surface: var(--color-cream-soft);
+  --bg-elevated: var(--color-white);
+  --bg-muted: var(--color-latte);
+  --text-primary: var(--color-espresso);
+  --text-secondary: #6B5A4C;
+  --text-muted: #9A8B7C;
+  --text-on-dark: var(--color-cream);
+  --border-subtle: rgba(43, 27, 20, 0.10);
+  --border-strong: rgba(43, 27, 20, 0.20);
+}
+
+/* ---- Dark theme override --------------------------------------------------- */
+[data-theme="dark"] {
+  --bg-body: var(--color-espresso);
+  --bg-surface: var(--color-espresso-soft);
+  --bg-elevated: #4A342A;
+  --bg-muted: #3D291F;
+  --text-primary: var(--color-cream);
+  --text-secondary: #D9C6AF;
+  --text-muted: #A6907C;
+  --border-subtle: rgba(247, 241, 230, 0.10);
+  --border-strong: rgba(247, 241, 230, 0.20);
+
+  --glass-bg: rgba(43, 27, 20, 0.55);
+  --glass-border: rgba(255, 255, 255, 0.08);
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.24);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.32);
+  --shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.40);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

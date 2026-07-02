@@ -1,0 +1,77 @@
+/* ==========================================================================
+   FOOTER.CSS
+   ========================================================================== */
+
+.footer {
+  background: var(--color-espresso);
+  color: var(--color-cream);
+  padding-block: var(--space-xl) var(--space-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: var(--gradient-roast-line);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+  gap: var(--space-lg);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid rgba(247,241,230,0.12);
+}
+
+.footer-brand {
+  display: flex; align-items: center; gap: var(--space-2xs);
+  font-family: var(--font-display);
+  font-size: var(--fs-md);
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+}
+
+.footer p { color: rgba(247,241,230,0.65); font-size: var(--fs-sm); }
+
+.footer-col h5 {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-gold-soft);
+  margin-bottom: var(--space-sm);
+}
+
+.footer-col ul { display: flex; flex-direction: column; gap: var(--space-2xs); }
+.footer-col a {
+  color: rgba(247,241,230,0.75);
+  font-size: var(--fs-sm);
+  transition: color var(--dur-fast) var(--ease-out), padding-left var(--dur-fast) var(--ease-out);
+}
+.footer-col a:hover { color: var(--color-gold-soft); padding-left: 4px; }
+
+.footer-social { display: flex; gap: var(--space-2xs); margin-top: var(--space-sm); }
+.footer-social a {
+  width: 38px; height: 38px;
+  border-radius: var(--radius-full);
+  background: rgba(247,241,230,0.08);
+  display: flex; align-items: center; justify-content: center;
+  transition: background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+}
+.footer-social a:hover { background: var(--color-gold); color: var(--color-espresso); transform: translateY(-3px); }
+
+.footer-bottom {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: var(--space-xs);
+  padding-top: var(--space-md);
+  font-size: var(--fs-xs);
+  color: rgba(247,241,230,0.5);
+}
+
+@media (max-width: 900px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .footer-grid { grid-template-columns: 1fr; }
+}

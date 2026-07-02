@@ -1,0 +1,167 @@
+/* ==========================================================================
+   HOME.CSS — Các section riêng của Trang chủ
+   ========================================================================== */
+
+/* ---- Loading screen ------------------------------------------------------ */
+.loading-screen {
+  position: fixed; inset: 0;
+  z-index: var(--z-loading);
+  background: var(--color-espresso);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: var(--space-sm);
+  transition: opacity 0.5s var(--ease-out), visibility 0.5s var(--ease-out);
+}
+.loading-screen.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+body.is-loading-lock { overflow: hidden; }
+
+.loading-mark {
+  position: relative;
+  width: 64px; height: 64px;
+  border-radius: var(--radius-full);
+  background: var(--gradient-gold);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem;
+}
+.loading-mark::before, .loading-mark::after {
+  content: '';
+  position: absolute; inset: 0;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-gold);
+  animation: pulse-ring 1.8s var(--ease-out) infinite;
+}
+.loading-mark::after { animation-delay: 0.5s; }
+.loading-screen p { color: var(--color-cream); opacity: 0.7; font-size: var(--fs-sm); font-family: var(--font-mono); letter-spacing: 0.06em; }
+
+/* ---- Trust strip / marquee ------------------------------------------------- */
+.trust-strip { border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); padding-block: var(--space-sm); overflow: hidden; }
+.trust-strip .marquee-track {
+  display: flex; gap: var(--space-2xl);
+  width: max-content;
+  animation: marquee-scroll 26s linear infinite;
+}
+.trust-strip .marquee-track span {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* ---- Animated Statistics --------------------------------------------------- */
+.stats-band {
+  background: var(--color-espresso);
+  border-radius: var(--radius-xl);
+  color: var(--color-cream);
+  padding: var(--space-lg);
+}
+.stats-band .grid { gap: var(--space-md); }
+.stat-item { text-align: center; }
+.stat-value {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  color: var(--color-gold-soft);
+  line-height: 1;
+}
+.stat-label { font-size: var(--fs-sm); color: rgba(247,241,230,0.65); margin-top: var(--space-2xs); }
+
+/* ---- Featured Menu Cards --------------------------------------------------- */
+.menu-card { display: flex; flex-direction: column; overflow: hidden; }
+.menu-card-media { position: relative; aspect-ratio: 4/3; overflow: hidden; }
+.menu-card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-slow) var(--ease-out); }
+.menu-card:hover .menu-card-media img { transform: scale(1.08); }
+
+.menu-card-badges { position: absolute; top: var(--space-xs); left: var(--space-xs); display: flex; gap: 6px; }
+.menu-card-fav {
+  position: absolute; top: var(--space-xs); right: var(--space-xs);
+  width: 38px; height: 38px; border-radius: var(--radius-full);
+  background: rgba(255,255,255,0.9);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--color-espresso);
+  transition: transform var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+.menu-card-fav:hover { transform: scale(1.1); }
+.menu-card-fav[aria-pressed="true"] { color: var(--color-danger); }
+.menu-card-fav svg { width: 18px; height: 18px; }
+
+.menu-card-body { padding: var(--space-sm) var(--space-md) var(--space-md); display: flex; flex-direction: column; gap: var(--space-2xs); flex: 1; }
+.menu-card-body h4 { font-size: var(--fs-md); }
+.menu-card-rating { display: flex; align-items: center; gap: 4px; font-size: var(--fs-xs); color: var(--text-muted); }
+.menu-card-rating svg { width: 14px; height: 14px; color: var(--color-gold); }
+.menu-card-desc { font-size: var(--fs-sm); flex: 1; }
+.menu-card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: var(--space-2xs); }
+.menu-card-price { font-family: var(--font-mono); font-weight: 700; color: var(--color-roast); font-size: var(--fs-md); }
+[data-theme="dark"] .menu-card-price { color: var(--color-gold-soft); }
+
+.menu-card-add {
+  width: 42px; height: 42px; border-radius: var(--radius-full);
+  background: var(--color-espresso); color: var(--color-cream);
+  display: flex; align-items: center; justify-content: center;
+  transition: transform var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
+}
+.menu-card-add:hover { transform: rotate(90deg) scale(1.05); background: var(--color-roast); }
+.menu-card-add svg { width: 18px; height: 18px; }
+
+/* ---- Story split section --------------------------------------------------- */
+.story-split { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: var(--space-xl); align-items: center; }
+.story-media { position: relative; border-radius: var(--radius-xl); overflow: hidden; aspect-ratio: 4/5; box-shadow: var(--shadow-lg); }
+.story-media img { width: 100%; height: 100%; object-fit: cover; }
+.story-list { display: flex; flex-direction: column; gap: var(--space-sm); margin-top: var(--space-md); }
+.story-list-item { display: flex; gap: var(--space-sm); align-items: flex-start; }
+.story-list-item .icon {
+  width: 40px; height: 40px; border-radius: var(--radius-md); flex-shrink: 0;
+  background: var(--bg-muted); display: flex; align-items: center; justify-content: center; color: var(--color-roast);
+}
+.story-list-item h5 { font-size: var(--fs-base); margin-bottom: 2px; }
+.story-list-item p { font-size: var(--fs-sm); }
+
+@media (max-width: 900px) {
+  .story-split { grid-template-columns: 1fr; }
+}
+
+/* ---- Testimonials ----------------------------------------------------------- */
+.testimonial-card { padding: var(--space-lg); display: flex; flex-direction: column; gap: var(--space-sm); }
+.testimonial-quote { font-family: var(--font-display); font-size: var(--fs-md); line-height: var(--lh-snug); color: var(--text-primary); }
+.testimonial-author { display: flex; align-items: center; gap: var(--space-xs); margin-top: auto; }
+.testimonial-author img { width: 44px; height: 44px; border-radius: var(--radius-full); object-fit: cover; }
+.testimonial-author strong { font-size: var(--fs-sm); display: block; }
+.testimonial-author span { font-size: var(--fs-xs); color: var(--text-muted); }
+.testimonial-stars { display: flex; gap: 2px; color: var(--color-gold); }
+.testimonial-stars svg { width: 15px; height: 15px; }
+
+/* ---- CTA reservation band ---------------------------------------------------- */
+.cta-band {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  padding: var(--space-2xl) var(--space-lg);
+  text-align: center;
+  background: var(--color-espresso);
+  color: var(--color-cream);
+  isolation: isolate;
+}
+.cta-band::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 20% 20%, rgba(201,162,39,0.28), transparent 55%),
+              radial-gradient(circle at 80% 80%, rgba(124,139,111,0.22), transparent 55%);
+  z-index: -1;
+}
+.cta-band h2 { color: var(--color-cream); max-width: 20ch; margin-inline: auto; }
+.cta-band p { color: rgba(247,241,230,0.7); max-width: 46ch; margin: var(--space-sm) auto var(--space-lg); }
+.cta-actions { display: flex; gap: var(--space-sm); justify-content: center; flex-wrap: wrap; }
+
+/* ---- Back to top ------------------------------------------------------------- */
+.back-to-top {
+  position: fixed; right: var(--space-md); bottom: var(--space-md);
+  width: 48px; height: 48px; border-radius: var(--radius-full);
+  background: var(--color-espresso); color: var(--color-cream);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-md);
+  opacity: 0; transform: translateY(12px) scale(0.9); pointer-events: none;
+  transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out);
+  z-index: 90;
+}
+.back-to-top.is-visible { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+.back-to-top:hover { background: var(--color-roast); }
